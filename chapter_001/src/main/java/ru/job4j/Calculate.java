@@ -8,6 +8,15 @@ package ru.job4j;
  */
 public class Calculate {
 	 /**
+* Method echo.
+* @param name Andrey .
+* @return Echo plus Andrey.
+*/
+public String echo(String name) {
+    return "Echo, echo, echo : " + name;
+}
+	 
+	 /**
      * Main.
      * @param args - args.
      */
