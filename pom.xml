@@ -16,7 +16,7 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apach.maven.plugins</groupId>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
@@ -49,6 +49,7 @@
 	
 	  <modules>
         <module>chapter_001</module>
+		<module>chapter_002</module>
     </modules>
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
