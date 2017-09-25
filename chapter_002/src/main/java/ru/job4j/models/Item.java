@@ -33,6 +33,49 @@ public class Item {
         this.desc = desc;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        /* проверяем равны ли ссылки */
+        if (obj == this)
+            return true;
+
+        /* obj ссылается на null */
+        if (obj == null)
+            return false;
+
+        /* Удостоверимся, что ссылки имеют тот же самый тип */
+        if (!(this.getClass() == obj.getClass()))
+            return false;
+        else {
+            Item tmp = (Item) obj;
+            if (this.comments == null && tmp.comments != null) {
+                return false;
+            }
+
+            if (this.comments != null && tmp.comments == null) {
+                return false;
+            }
+
+            if (this.comments != null && tmp.comments != null) {
+                if (this.comments.length != tmp.comments.length) {
+                    return false;
+                }
+
+                for (int i = 0; i < this.comments.length; i++) {
+                    if (!(this.comments[i].equals(tmp.comments[i]))) {
+                        return false;
+                    }
+                }
+            }
+
+            if (this.id.equals(tmp.id) && this.name.equals(tmp.name) && this.desc.equals(tmp.desc)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
     public String getId() {
         return id;
     }
