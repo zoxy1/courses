@@ -1,12 +1,29 @@
 <project>
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>chapter_002</artifactId>
-	<version>2.0</version>
-	<packaging>jar</packaging>
-	<parent>
-		<groupId>ru.job4j</groupId>
-		<artifactId>junior</artifactId>
-		<version>2.0</version>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>chapter_002</artifactId>
+    <version>2.0</version>
+    <packaging>jar</packaging>
+    <parent>
+        <groupId>ru.job4j</groupId>
+        <artifactId>junior</artifactId>
+        <version>2.0</version>
+    </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <finalName>tracker</finalName>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>ru.job4j.models.StartUi</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 				
