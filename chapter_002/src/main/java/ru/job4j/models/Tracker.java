@@ -21,29 +21,35 @@ public class Tracker {
 
     public Item[] findAll() {
         int numberWithoutNull = 0;
+        Item[] itemsWithoutNull = null;
         for (int i = 0; i < position; i++) {
             if (this.items[i] != null) {
                 numberWithoutNull++;
             }
         }
-        Item[] itemsWithoutNull = new Item[numberWithoutNull];
-        int index = 0;
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null) {
-                itemsWithoutNull[index] = this.items[i];
-                index++;
+        if (numberWithoutNull != 0) {
+            itemsWithoutNull = new Item[numberWithoutNull];
+            int index = 0;
+            for (int i = 0; i < position; i++) {
+                if (this.items[i] != null) {
+                    itemsWithoutNull[index] = this.items[i];
+                    index++;
+                }
             }
         }
         return itemsWithoutNull;
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean isFindId = false;
         for (int i = 0; i < position; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 this.items[i] = null;
+                isFindId = true;
                 break;
             }
         }
+        return isFindId;
     }
 
     public Item findById(String id) {

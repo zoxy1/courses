@@ -22,15 +22,17 @@ public class Item {
     public Item() {
     }
 
-    public Item(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public Item(String id, String name, String desc) {
         this.id = id;
         this.name = name;
         this.desc = desc;
+    }
+
+    public Item(String id, String name, String desc, long created) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
     }
 
     @Override
