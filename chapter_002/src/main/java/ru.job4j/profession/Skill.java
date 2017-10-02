@@ -1,4 +1,4 @@
-package ru.job4j.Profession;
+package ru.job4j.profession;
 
 /**
  * Created by Zoxy1 on 23.09.17.

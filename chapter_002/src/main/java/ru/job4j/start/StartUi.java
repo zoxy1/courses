@@ -1,4 +1,4 @@
-package ru.job4j.models;
+package ru.job4j.start;
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ public class StartUi {
     private static final String FIND_ITEMS_BY_NAME = "5";
     private static final String EXIT_PROGRAM = "6";
     private long id = 0;
-    Tracker tracker = new Tracker();
+    private Tracker tracker = new Tracker();
 
     public StartUi(Input input) {
         this.input = input;
@@ -81,7 +81,8 @@ public class StartUi {
 
     private void deleteItem() {
         String id = input.ask("Enter id item, which is delete:");
-        if (this.tracker.delete(id) == false) {
+        boolean isDelete = this.tracker.delete(id);
+        if (!isDelete) {
             System.out.println("Item with such ID not found:");
         }
     }

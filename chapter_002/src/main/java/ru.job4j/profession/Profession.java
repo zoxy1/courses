@@ -1,4 +1,4 @@
-package ru.job4j.Profession;
+package ru.job4j.profession;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,9 @@ import java.util.ArrayList;
  * Created by Zoxy1 on 23.09.17.
  */
 public class Profession {
-    protected String name;
-    protected Degree degree;
-    protected ArrayList<Skill> skills;
+    private String name;
+    private Degree degree;
+    private ArrayList<Skill> skills;
 
     public Profession() {
     }

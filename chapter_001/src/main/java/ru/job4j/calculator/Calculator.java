@@ -1,13 +1,16 @@
-package ru.job4j.Calculator;
+package ru.job4j.calculator;
 
 /**
- * Calculator.
+ * calculator.
  *
  * @author Andrey Kudryavtsev (zoxy1@yandex.ru)
  * @version $Id$
  * @since 0.1
  */
 public class Calculator {
+    /**
+     * This variable stores the result of operations.
+     */
     private double result;
 
     /**

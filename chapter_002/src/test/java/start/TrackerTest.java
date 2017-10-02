@@ -1,4 +1,4 @@
-package ru.job4j.models;
+package ru.job4j.start;
 
 import org.junit.Test;
 

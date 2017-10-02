@@ -1,4 +1,6 @@
-package ru.job4j.models;
+package ru.job4j.start;
+
+import java.util.Arrays;
 
 public class Item {
     private String id;
@@ -33,49 +35,6 @@ public class Item {
         this.name = name;
         this.desc = desc;
         this.created = created;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        /* проверяем равны ли ссылки */
-        if (obj == this)
-            return true;
-
-        /* obj ссылается на null */
-        if (obj == null)
-            return false;
-
-        /* Удостоверимся, что ссылки имеют тот же самый тип */
-        if (!(this.getClass() == obj.getClass()))
-            return false;
-        else {
-            Item tmp = (Item) obj;
-            if (this.comments == null && tmp.comments != null) {
-                return false;
-            }
-
-            if (this.comments != null && tmp.comments == null) {
-                return false;
-            }
-
-            if (this.comments != null && tmp.comments != null) {
-                if (this.comments.length != tmp.comments.length) {
-                    return false;
-                }
-
-                for (int i = 0; i < this.comments.length; i++) {
-                    if (!(this.comments[i].equals(tmp.comments[i]))) {
-                        return false;
-                    }
-                }
-            }
-
-            if (this.id.equals(tmp.id) && this.name.equals(tmp.name) && this.desc.equals(tmp.desc)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
     }
 
     public String getId() {
@@ -116,5 +75,42 @@ public class Item {
 
     public void setComments(String[] comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Item)) {
+            return false;
+        }
+
+        Item item = (Item) o;
+
+        if (getCreated() != item.getCreated()) {
+            return false;
+        }
+        if (!id.equals(item.id)) {
+            return false;
+        }
+        if (!getName().equals(item.getName())) {
+            return false;
+        }
+        if (!getDesc().equals(item.getDesc())) {
+            return false;
+        }
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(getComments(), item.getComments());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + getName().hashCode();
+        result = 31 * result + getDesc().hashCode();
+        result = 31 * result + (int) (getCreated() ^ (getCreated() >>> 32));
+        result = 31 * result + Arrays.hashCode(getComments());
+        return result;
     }
 }
