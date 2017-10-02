@@ -21,23 +21,15 @@ public class Tracker {
 
     public Item[] findAll() {
         int numberWithoutNull = 0;
-        Item[] itemsWithoutNull = null;
+        Item[] itemsWithoutNull = new Item[position];
         for (int i = 0; i < position; i++) {
             if (this.items[i] != null) {
-                numberWithoutNull++;
+                System.arraycopy(this.items, i, itemsWithoutNull, numberWithoutNull++, 1);
             }
         }
-        if (numberWithoutNull != 0) {
-            itemsWithoutNull = new Item[numberWithoutNull];
-            int index = 0;
-            for (int i = 0; i < position; i++) {
-                if (this.items[i] != null) {
-                    itemsWithoutNull[index] = this.items[i];
-                    index++;
-                }
-            }
-        }
-        return itemsWithoutNull;
+        Item[] itemsWithoutNullNewMass = new Item[numberWithoutNull];
+        System.arraycopy(itemsWithoutNull, 0, itemsWithoutNullNewMass, 0, numberWithoutNull);
+        return itemsWithoutNullNewMass;
     }
 
     public boolean delete(String id) {
@@ -66,22 +58,15 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] itemsFindByName = null;
         int numberSameName = 0;
+        Item[] itemsHasSameName = new Item[position];
         for (int i = 0; i < position; i++) {
             if (this.items[i] != null && this.items[i].getName().equals(key)) {
-                numberSameName++;
+                System.arraycopy(this.items, i, itemsHasSameName, numberSameName++, 1);
             }
         }
-        if (numberSameName != 0) {
-            itemsFindByName = new Item[numberSameName];
-            int index = 0;
-            for (int i = 0; i < position; i++) {
-                if (this.items[i] != null && this.items[i].getName().equals(key)) {
-                    itemsFindByName[index] = this.items[i];
-                    index++;
-                }
-            }
-        }
-        return itemsFindByName;
+        Item[] itemsHasSameNameNewMass = new Item[numberSameName];
+        System.arraycopy(itemsHasSameName, 0, itemsHasSameNameNewMass, 0, numberSameName);
+        return itemsHasSameNameNewMass;
     }
 
     public Item[] getItems() {

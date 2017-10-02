@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Zoxy1 on 30.09.17.
  */
 public class StartUi {
-    private ConsoleInput input;
+    private Input input;
     private static final String ADD_NEW_ITEM = "0";
     private static final String SHOW_ALL_ITEM = "1";
     private static final String EDIT_ITEM = "2";
@@ -17,7 +17,7 @@ public class StartUi {
     private long id = 0;
     Tracker tracker = new Tracker();
 
-    public StartUi(ConsoleInput input) {
+    public StartUi(Input input) {
         this.input = input;
     }
 
@@ -54,7 +54,7 @@ public class StartUi {
         Item[] items = this.tracker.findAll();
         if (items != null) {
             for (Item item : items) {
-                System.out.println("Id:" + item.getId() + " Name:" + item.getName() + " Description:" + item.getDesc());
+                System.out.println(String.format("Id:" + item.getId() + " Name:" + item.getName() + " Description:" + item.getDesc()));
             }
         } else {
             System.out.println("Items not found");
