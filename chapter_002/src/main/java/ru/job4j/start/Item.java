@@ -88,9 +88,6 @@ public class Item {
 
         Item item = (Item) o;
 
-        if (getCreated() != item.getCreated()) {
-            return false;
-        }
         if (!id.equals(item.id)) {
             return false;
         }

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Zoxy1 on 30.09.17.
  */
-public class StartUi {
+public class StartUI {
     private Input input;
     private static final String ADD_NEW_ITEM = "0";
     private static final String SHOW_ALL_ITEM = "1";
@@ -17,7 +17,12 @@ public class StartUi {
     private long id = 0;
     private Tracker tracker = new Tracker();
 
-    public StartUi(Input input) {
+    public StartUI(Input input, Tracker tracker) {
+        this.input = input;
+        this.tracker = tracker;
+    }
+
+    public StartUI(Input input) {
         this.input = input;
     }
 
@@ -111,7 +116,7 @@ public class StartUi {
 
     public static void main(String[] args) {
         Input input = new ConsoleInput();
-        new StartUi(input).init();
+        new StartUI(input).init();
     }
 
 

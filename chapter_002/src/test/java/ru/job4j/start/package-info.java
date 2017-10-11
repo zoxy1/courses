@@ -5,4 +5,4 @@
  * @version $Id$
  * sinse 0.1
  */
-package start;
+package ru.job4j.start;
