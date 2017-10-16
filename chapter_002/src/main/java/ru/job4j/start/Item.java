@@ -17,13 +17,6 @@ public class Item {
         this.comments = comments;
     }
 
-    public Item(String id) {
-        this.id = id;
-    }
-
-    public Item() {
-    }
-
     public Item(String id, String name, String desc) {
         this.id = id;
         this.name = name;
@@ -32,6 +25,12 @@ public class Item {
 
     public Item(String id, String name, String desc, long created) {
         this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
+    }
+
+    public Item(String name, String desc, long created) {
         this.name = name;
         this.desc = desc;
         this.created = created;

@@ -4,18 +4,25 @@ public class Tracker {
 
     private Item[] items = new Item[100];
     private int position = 0;
+    private int id = 0;
 
     public Item add(Item item) {
+        item.setId(String.valueOf(id++));
         this.items[position++] = item;
         return item;
     }
 
     public void update(Item item) {
+        boolean isFound = false;
         for (int i = 0; i < position; i++) {
             if (this.items[i] != null && this.items[i].getId().equals(item.getId())) {
                 this.items[i] = item;
+                isFound = true;
                 break;
             }
+        }
+        if (isFound == false) {
+            System.out.println("Item with such id not found!");
         }
     }
 
@@ -56,7 +63,6 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
-        Item[] itemsFindByName = null;
         int numberSameName = 0;
         Item[] itemsHasSameName = new Item[position];
         for (int i = 0; i < position; i++) {
@@ -83,5 +89,9 @@ public class Tracker {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
