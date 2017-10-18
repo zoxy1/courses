@@ -19,22 +19,16 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
+        int key;
         do {
             menu.show();
-            String key = input.ask("Select:");
-            if (key.equals("7")) {
-                break;
-            }
-            if (!key.equals("")) {
-                menu.select(Integer.valueOf(key));
-            }
-        } while (true);
+            key = input.ask("Select:", menu.getRanges());
+            menu.select(key);
+        } while (key != 7);
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         new StartUI(input).init();
     }
-
-
 }
