@@ -5,11 +5,12 @@ import java.util.Date;
 /**
  * Created by Zoxy1 on 16.10.17.
  */
-class EditItem implements UserAction {
+class EditItem extends BaseAction {
     private Input input;
     private Tracker tracker;
 
     public EditItem(Input input, Tracker tracker) {
+        super(3, "Edit item");
         this.input = input;
         this.tracker = tracker;
     }
@@ -26,11 +27,6 @@ class EditItem implements UserAction {
         String desc = this.input.ask("Enter new description item:");
         long created = new Date().getTime();
         this.tracker.update(new Item(id, name, desc, created));
-    }
-
-    @Override
-    public String info() {
-        return String.format("3. %s", "Edit item");
     }
 }
 
@@ -77,11 +73,12 @@ public class MenuTracker {
         }
     }
 
-    private class AddItem implements UserAction {
+    private class AddItem extends BaseAction {
         private Input input;
         private Tracker tracker;
 
         public AddItem(Input input, Tracker tracker) {
+            super(1, "Add new item");
             this.input = input;
             this.tracker = tracker;
         }
@@ -98,17 +95,13 @@ public class MenuTracker {
             long created = new Date().getTime();
             this.tracker.add(new Item(name, desc, created));
         }
-
-        @Override
-        public String info() {
-            return String.format("1. %s", "Add new item.");
-        }
     }
 
-    private static class ShowItems implements UserAction {
+    private static class ShowItems extends BaseAction {
         private Tracker tracker;
 
         public ShowItems(Tracker tracker) {
+            super(2, "Show all items");
             this.tracker = tracker;
         }
 
@@ -126,18 +119,14 @@ public class MenuTracker {
                 System.out.println(String.format("Id:%s, Name:%s, Description:%s", item.getId(), item.getName(), item.getDesc()));
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("2. %s", "Show all items");
-        }
     }
 
-    private class DeleteItem implements UserAction {
+    private class DeleteItem extends BaseAction {
         private Input input;
         private Tracker tracker;
 
         public DeleteItem(Input input, Tracker tracker) {
+            super(4, "Delete item.");
             this.input = input;
             this.tracker = tracker;
         }
@@ -155,18 +144,14 @@ public class MenuTracker {
                 System.out.println("Item with such ID not found:");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("4. %s", "Delete item");
-        }
     }
 
-    private class FindItemById implements UserAction {
+    private class FindItemById extends BaseAction {
         private Input input;
         private Tracker tracker;
 
         public FindItemById(Input input, Tracker tracker) {
+            super(5, "Find item by id");
             this.input = input;
             this.tracker = tracker;
         }
@@ -186,18 +171,14 @@ public class MenuTracker {
                 System.out.println("Item with such ID not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("5. %s", "Find item by id");
-        }
     }
 
-    private class FindItemByName implements UserAction {
+    private class FindItemByName extends BaseAction {
         private Input input;
         private Tracker tracker;
 
         public FindItemByName(Input input, Tracker tracker) {
+            super(6, "Find item by name");
             this.input = input;
             this.tracker = tracker;
         }
@@ -219,14 +200,13 @@ public class MenuTracker {
                 System.out.println("Item with such name not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("6. %s", "Find item by name");
-        }
     }
 
-    private class Exit implements UserAction {
+    private class Exit extends BaseAction {
+
+        public Exit() {
+            super(7, "Exit");
+        }
 
         @Override
         public int key() {
@@ -235,12 +215,6 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-
-        }
-
-        @Override
-        public String info() {
-            return String.format("7. %s", "Exit");
         }
     }
 }
