@@ -36,6 +36,8 @@ class EditItem extends BaseAction {
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
+
+    private int[] ranges;
     private UserAction[] actions = new UserAction[7];
 
     public MenuTracker(Input input, Tracker tracker) {
@@ -51,6 +53,10 @@ public class MenuTracker {
         this.actions[4] = new FindItemById(this.input, this.tracker);
         this.actions[5] = new FindItemByName(this.input, this.tracker);
         this.actions[6] = new Exit();
+        ranges = new int[this.actions.length];
+        for (int i = 0; i < ranges.length; i++) {
+            ranges[i] = this.actions[i].key();
+        }
     }
 
     public void show() {
@@ -62,14 +68,10 @@ public class MenuTracker {
     }
 
     public void select(int key) {
-        if (key < 7 && key != 0) {
-            for (UserAction userAction : this.actions) {
-                if (userAction.key() == key) {
-                    userAction.execute(this.input, this.tracker);
-                }
+        for (UserAction userAction : this.actions) {
+            if (userAction.key() == key) {
+                userAction.execute(this.input, this.tracker);
             }
-        } else {
-            System.out.println("Number entered incorrectly!");
         }
     }
 
@@ -217,4 +219,9 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
         }
     }
+
+    public int[] getRanges() {
+        return ranges;
+    }
+
 }

@@ -11,4 +11,9 @@ public class StubInput implements Input {
     public String ask(String question) {
         return this.strings[count++];
     }
+
+    @Override
+    public int ask(String question, int[] range) {
+        return -1;
+    }
 }
