@@ -1,13 +1,13 @@
 package ru.job4j.chess;
 
-public class Figure {
-    private final Cell position;
+public abstract class Figure {
+
+    protected final Cell position;
 
     public Figure(Cell position) {
         this.position = position;
     }
 
-    public Cell[] way(Cell dist) throws ImpossibleMoveException {
-        return new Cell[1];
-    }
+    abstract Cell[] way(Cell dist)  throws ImpossibleMoveException;
+
 }
