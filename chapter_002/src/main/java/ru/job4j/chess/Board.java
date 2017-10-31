@@ -8,22 +8,31 @@ public class Board {
     }
 
     public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-        Figure figureFound = null;
-        for (Figure figure: figures) {
-            if(source.equals(figure.position)) {
-                figureFound = figure;
+        Integer indexFigureFound = null;
+        Boolean isMoved = false;
+        for (int i = 0; i < this.figures.length; i++) {
+            if (source.equals(this.figures[i].position)) {
+                indexFigureFound = i;
                 break;
             }
         }
-        if (figureFound == null) {
+        if (indexFigureFound == null) {
             throw new FigureNotFoundException("The figure was not found");
         }
-        try {
-            Cell[] cells = figureFound.way(dist);
-        } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
+        Cell[] cells = this.figures[indexFigureFound].way(dist);
+        for (Figure figure : figures) {
+            for (Cell cell : cells) {
+                if (figure.position.getX() == cell.getX() && figure.position.getY() == cell.getY()) {
+                    throw new OccupiedWayException("Way is occupied.");
+                }
+            }
         }
+        this.figures[indexFigureFound] = this.figures[indexFigureFound].clone(dist);
+        isMoved = true;
+        return isMoved;
+    }
 
-        return true;
+    public Figure[] getFigures() {
+        return figures;
     }
 }
