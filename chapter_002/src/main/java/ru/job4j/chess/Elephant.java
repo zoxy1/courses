@@ -14,35 +14,26 @@ public class Elephant extends Figure {
             int yDist = dist.getY();
             int x = this.position.getX();
             int y = this.position.getY();
-            while (x < xDist && y < yDist) {
-                x++;
-                y++;
-                cells[indexCell] = new Cell(x, y);
-                indexCell++;
+            int signX;
+            int signY;
+            if (x < xDist) {
+                signX = 1;
+            } else {
+                signX = -1;
             }
-            x = this.position.getX();
-            y = this.position.getY();
-            while (x > xDist && y > yDist) {
-                x--;
-                y--;
-                cells[indexCell] = new Cell(x, y);
-                indexCell++;
+            if (y < yDist) {
+                signY = 1;
+            } else {
+                signY = -1;
             }
-            x = this.position.getX();
-            y = this.position.getY();
-            while (x > xDist && y < yDist) {
-                x--;
-                y++;
+            while (true) {
+                x = x + signX;
+                y = y + signY;
                 cells[indexCell] = new Cell(x, y);
                 indexCell++;
-            }
-            x = this.position.getX();
-            y = this.position.getY();
-            while (x < xDist && y > yDist) {
-                x++;
-                y--;
-                cells[indexCell] = new Cell(x, y);
-                indexCell++;
+                if (x == xDist || y == yDist) {
+                    break;
+                }
             }
         } else {
             throw new ImpossibleMoveException("Impossible move figure");
