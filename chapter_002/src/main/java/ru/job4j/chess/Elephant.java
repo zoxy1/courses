@@ -26,15 +26,13 @@ public class Elephant extends Figure {
             } else {
                 signY = -1;
             }
-            while (true) {
+            do {
                 x = x + signX;
                 y = y + signY;
                 cells[indexCell] = new Cell(x, y);
                 indexCell++;
-                if (x == xDist || y == yDist) {
-                    break;
-                }
             }
+            while (!(x == xDist || y == yDist));
         } else {
             throw new ImpossibleMoveException("Impossible move figure");
         }
