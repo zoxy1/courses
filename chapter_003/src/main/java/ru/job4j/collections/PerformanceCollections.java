@@ -5,6 +5,7 @@ import java.util.*;
 public class PerformanceCollections {
     private static final String mCHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     private static final int STR_LENGTH = 5; // длина генерируемой строки
+
     Collection<String> collection;
     Random random = new Random();
 
@@ -27,10 +28,18 @@ public class PerformanceCollections {
 
     public long delete(Collection<String> collection, int amount) {
         Date startLinked = new Date();
-
-    Iterator<String> iter = collection.iterator();
-
+        Iterator<String> iter = collection.iterator();
+        String string;
+        for(int i =0; i < amount; i++){
+            iter.next();
+            iter.remove();
+        }
         Date finishLinked = new Date();
         return finishLinked.getTime() - startLinked.getTime();
     }
+
+    public Collection<String> getCollection() {
+        return collection;
+    }
+
 }

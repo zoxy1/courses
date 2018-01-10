@@ -9,19 +9,25 @@ import java.util.TreeSet;
 public class PerformanceCollectionsTest {
     @Test
     public void performanceAddRandomToArrayList () {
-        int amount = 3000;
+        int amount = 10000000;
+        int amountDelete = amount/4;
         PerformanceCollections performanceCollections = new PerformanceCollections();
-        long timeRemoveLinkedList = performanceCollections.add(new LinkedList<>(), amount);
-        System.out.println(String.format("Время выволнения вставки %s элементов для LinkedList:%s", amount, timeRemoveLinkedList));
-        long timeDeleteLinkedList = performanceCollections.delete(performanceCollections.collection, amount/10);
-        System.out.println(String.format("Время удаления %s элементов из LinkedList:%s", amount/10, timeDeleteLinkedList));
+        long timeAddLinkedList = performanceCollections.add(new LinkedList<>(), amount);
+        System.out.println(String.format("Время выполнения вставки %s элементов для LinkedList:%s", amount, timeAddLinkedList));
 
-        long timeArrayList = performanceCollections.add(new ArrayList<>(), amount);
-        System.out.println(String.format("Время выволнения вставки %s элементов для ArrayList:%s", amount, timeArrayList));
+        long timeAddArrayList = performanceCollections.add(new ArrayList<>(), amount);
+        System.out.println(String.format("Время выполнения вставки %s элементов для ArrayList:%s", amount, timeAddArrayList));
+
         long timeTreeSet = performanceCollections.add(new TreeSet<>(), amount);
-        System.out.println(String.format("Время выволнения вставки %s элементов для TreeSet:%s", amount, timeTreeSet));
+        System.out.println(String.format("Время выполнения вставки %s элементов для TreeSet:%s", amount, timeTreeSet));
 
+        long timeDeleteLinkedList = performanceCollections.delete(performanceCollections.getCollection(), amountDelete);
+        System.out.println(String.format("Время удаления первых %s элементов из LinkedList:%s", amountDelete, timeDeleteLinkedList));
 
+        long timeDeleteArrayList = performanceCollections.delete(performanceCollections.getCollection(), amountDelete);
+        System.out.println(String.format("Время удаления первых %s элементов из ArrayList:%s", amountDelete, timeDeleteArrayList));
 
+        long timeDeleteTreeSet = performanceCollections.delete(performanceCollections.getCollection(), amountDelete);
+        System.out.println(String.format("Время удаления первых %s элементов из TreeSet:%s", amountDelete, timeDeleteTreeSet));
     }
 }
