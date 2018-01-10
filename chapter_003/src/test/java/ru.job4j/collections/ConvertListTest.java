@@ -3,6 +3,7 @@ package ru.job4j.collections;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConvertListTest {
@@ -29,6 +30,16 @@ public class ConvertListTest {
                 System.out.print(array[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+
+    @Test
+    public void convertListArraysToList() {
+        ConvertList convertList = new ConvertList();
+        List<int[]> listArrays = Arrays.asList(new int[]{1, 2}, new int[]{3, 4, 5, 6});
+        List<Integer> result = convertList.convert(listArrays);
+        for (Integer value : result) {
+            System.out.print(value + " ");
         }
     }
 }
