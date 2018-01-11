@@ -1,6 +1,7 @@
 package ru.job4j.start;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Zoxy1 on 16.10.17.
@@ -114,7 +115,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            if (this.tracker.findAll().length == 0) {
+            if (this.tracker.findAll().size() == 0) {
                 System.out.println("Items not found");
             }
             for (Item item : this.tracker.findAll()) {
@@ -193,8 +194,8 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String name = this.input.ask("Enter name item:");
-            Item[] items = this.tracker.findByName(name);
-            if (items.length != 0) {
+            List<Item> items = this.tracker.findByName(name);
+            if (items.size() != 0) {
                 for (Item item : items) {
                     System.out.println(String.format("Id:%s, Name:%s, Description:%s", item.getId(), item.getName(), item.getDesc()));
                 }

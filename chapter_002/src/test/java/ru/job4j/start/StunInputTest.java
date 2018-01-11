@@ -1,6 +1,9 @@
 package ru.job4j.start;
 
 import org.junit.Test;
+
+import java.util.List;
+
 import static junit.framework.TestCase.assertNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -12,8 +15,8 @@ public class StunInputTest {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getItems()[0].getName(), is("test name"));
-        assertThat(tracker.getItems()[0].getDesc(), is("desc"));
+        assertThat(tracker.getItems().get(0).getName(), is("test name"));
+        assertThat(tracker.getItems().get(0).getDesc(), is("desc"));
     }
 
     @Test
@@ -44,9 +47,9 @@ public class StunInputTest {
         Item item0 = new Item("0", "test name1", "desc1");
         Item item1 = new Item("1", "test name2", "desc2");
         new StartUI(input, tracker).init();
-        Item[] itemsResultAll = tracker.findAll();
-        assertThat(itemsResultAll[0], is(item0));
-        assertThat(itemsResultAll[1], is(item1));
+        List<Item> itemsResultAll = tracker.findAll();
+        assertThat(itemsResultAll.get(0), is(item0));
+        assertThat(itemsResultAll.get(1), is(item1));
     }
 
     @Test
@@ -64,9 +67,9 @@ public class StunInputTest {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "Andrey", "desc1", "0", "Max", "desc2", "0", "Andrey", "desc3", "5", "Andrey", "6"});
         new StartUI(input, tracker).init();
-        Item[] itemsResultAll = tracker.findByName("Andrey");
-        assertThat(itemsResultAll[0].getName(), is("Andrey"));
-        assertThat(itemsResultAll[1].getName(), is("Andrey"));
+        List<Item> itemsResultAll = tracker.findByName("Andrey");
+        assertThat(itemsResultAll.get(0).getName(), is("Andrey"));
+        assertThat(itemsResultAll.get(1).getName(), is("Andrey"));
     }
 
 }

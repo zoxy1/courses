@@ -1,49 +1,50 @@
 package ru.job4j.start;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 public class Tracker {
 
-    private Item[] items = new Item[100];
-    private int position = 0;
-    private int id = 0;
+    private List<Item> items = new ArrayList<>();
 
     public Item add(Item item) {
-        item.setId(String.valueOf(id++));
-        this.items[position++] = item;
+        items.add(item);
         return item;
     }
 
     public void update(Item item) {
         boolean isFound = false;
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(item.getId())) {
-                this.items[i] = item;
-                isFound = true;
-                break;
-            }
+        for (Item itemList : this.items) {
+            if (itemList != null && itemList.getId().equals(item.getId())) ;
+            this.items.set(this.items.indexOf(itemList), item);
+            isFound = true;
+            break;
         }
         if (isFound == false) {
             System.out.println("Item with such id not found!");
         }
     }
 
-    public Item[] findAll() {
-        int numberWithoutNull = 0;
-        Item[] itemsWithoutNull = new Item[position];
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null) {
-                System.arraycopy(this.items, i, itemsWithoutNull, numberWithoutNull++, 1);
+    public List<Item> findAll() {
+        List<Item> itemsWithoutNull = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item != null) {
+                itemsWithoutNull.add(item);
             }
         }
-        Item[] itemsWithoutNullNewMass = new Item[numberWithoutNull];
-        System.arraycopy(itemsWithoutNull, 0, itemsWithoutNullNewMass, 0, numberWithoutNull);
-        return itemsWithoutNullNewMass;
+        return itemsWithoutNull;
     }
 
     public boolean delete(String id) {
         boolean isFindId = false;
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(id)) {
-                this.items[i] = null;
+        Iterator<Item> iterator = this.items.iterator();
+        Item item;
+        while (iterator.hasNext()) {
+            item = iterator.next();
+            if (item != null && item.getId().equals(id)) {
+                iterator.remove();
                 isFindId = true;
                 break;
             }
@@ -62,36 +63,17 @@ public class Tracker {
         return result;
     }
 
-    public Item[] findByName(String key) {
-        int numberSameName = 0;
-        Item[] itemsHasSameName = new Item[position];
-        for (int i = 0; i < position; i++) {
-            if (this.items[i] != null && this.items[i].getName().equals(key)) {
-                System.arraycopy(this.items, i, itemsHasSameName, numberSameName++, 1);
+    public List<Item> findByName(String key) {
+        List<Item> itemsHasSameName = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item != null && item.getName().equals(key)) {
+                itemsHasSameName.add(item);
             }
         }
-        Item[] itemsHasSameNameNewMass = new Item[numberSameName];
-        System.arraycopy(itemsHasSameName, 0, itemsHasSameNameNewMass, 0, numberSameName);
-        return itemsHasSameNameNewMass;
+        return itemsHasSameName;
     }
 
-    public Item[] getItems() {
+    public List<Item> getItems() {
         return items;
-    }
-
-    public void setItems(Item[] items) {
-        this.items = items;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

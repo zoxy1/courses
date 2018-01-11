@@ -2,6 +2,8 @@ package ru.job4j.start;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -12,9 +14,9 @@ public class TrackerTest {
         tracker.add(new Item("1", "Заявка 1", "Описание 1"));
         tracker.add(new Item("2", "Заявка 2", "Описание 2"));
         int positionExpected = 2;
-        assertEquals(positionExpected, tracker.getPosition());
-        assertTrue(tracker.getItems()[0].equals(new Item("1", "Заявка 1", "Описание 1")));
-        assertTrue(tracker.getItems()[1].equals(new Item("2", "Заявка 2", "Описание 2")));
+        assertEquals(positionExpected, tracker.getItems().size());
+        assertTrue(tracker.getItems().get(0).equals(new Item("1", "Заявка 1", "Описание 1")));
+        assertTrue(tracker.getItems().get(1).equals(new Item("2", "Заявка 2", "Описание 2")));
     }
 
     @Test
@@ -42,9 +44,11 @@ public class TrackerTest {
         tracker.add(new Item("2", "Заявка 2", "Описание 2"));
         tracker.add(new Item("3", "Заявка 3", "Описание 3"));
         tracker.delete("1");
-        Item[] itemsResultAll = tracker.findAll();
-        assertTrue(tracker.getItems()[1].equals(itemsResultAll[0]));
-        assertTrue(tracker.getItems()[2].equals(itemsResultAll[1]));
+        List<Item> itemsResultAll = tracker.findAll();
+        int positionExpected = 2;
+        assertEquals(positionExpected, tracker.getItems().size());
+        assertTrue(tracker.getItems().get(0).equals(itemsResultAll.get(0)));
+        assertTrue(tracker.getItems().get(1).equals(itemsResultAll.get(1)));
     }
 
     @Test
@@ -53,9 +57,9 @@ public class TrackerTest {
         tracker.add(new Item("1", "Заявка 1", "Описание 1"));
         tracker.add(new Item("2", "Заявка 2", "Описание 2"));
         tracker.add(new Item("3", "Заявка 2", "Описание 3"));
-        Item[] resultItems = tracker.findByName("Заявка 2");
-        assertTrue(resultItems[0].equals(new Item("2", "Заявка 2", "Описание 2")));
-        assertTrue(resultItems[1].equals(new Item("3", "Заявка 2", "Описание 3")));
+        List<Item> resultItems = tracker.findByName("Заявка 2");
+        assertTrue(resultItems.get(0).equals(new Item("2", "Заявка 2", "Описание 2")));
+        assertTrue(resultItems.get(1).equals(new Item("3", "Заявка 2", "Описание 3")));
     }
 
     @Test
