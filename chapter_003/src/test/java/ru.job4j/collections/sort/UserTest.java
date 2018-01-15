@@ -2,9 +2,10 @@ package ru.job4j.collections.sort;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public class UserTest {
     @Test
@@ -20,5 +21,7 @@ public class UserTest {
         for (User user : sortUser) {
             System.out.println(String.format("Имя:%s Возраст:%d", user.getName(), user.getAge()));
         }
+        Set<User> userSet = new TreeSet<>(userList);
+        assertThat(sortUser, is(userSet));
     }
 }
