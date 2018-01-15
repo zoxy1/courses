@@ -12,17 +12,25 @@ public class SortUser {
         users.sort(new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
-                return o1.getName().compareTo(o2.getName());
+                return o1.getName().length() - o2.getName().length();
             }
         });
-        //users.sort((o1, o2) ->  o1.getName().compareTo(o2.getName()));
-        //users.sort(Comparator.comparing(User::getName));
-        return  users;
+        return users;
     }
 
-    public List<User> sortByAllFields (List<User> users) {
-        users.
-        //- в этом методе необходимо определить Comparator для метода Collections.sort
-        // и отсортировать List<User> по обоим полям, сначала сортировка по имени в лексикографическом порядке, потом по возрасту.
+    public List<User> sortByAllFields(List<User> users) {
+        users.sort(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                int result;
+                if (o1.getName().compareTo(o2.getName()) == 0) {
+                    result = o1.getAge() - o2.getAge();
+                } else {
+                    result = o1.getName().compareTo(o2.getName());
+                }
+                return result;
+            }
+        });
+        return users;
     }
 }
