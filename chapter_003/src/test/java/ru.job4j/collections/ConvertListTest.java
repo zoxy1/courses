@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class ConvertListTest {
     @Test
     public void convertArrayToList() {
@@ -15,6 +18,7 @@ public class ConvertListTest {
         for (Integer value : list) {
             System.out.printf(String.valueOf(value.intValue()) + ", ");
         }
+        assertThat(list, is(Arrays.asList(1, 2, 3, 4, 5, 6, 7)));
     }
 
     @Test
@@ -24,13 +28,15 @@ public class ConvertListTest {
         for (int i = 1; i < 8; i++) {
             list.add(i);
         }
-        int array[][] = convertList.toArray(list, 4);
+        int array[][] = convertList.toArray(list, 3);
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 System.out.print(array[i][j] + " ");
             }
             System.out.println();
         }
+        int arrayExpected[][] = {{1, 2, 3}, {4, 5, 6}, {7, 0, 0}};
+        assertThat(array, is(arrayExpected));
     }
 
     @Test
@@ -41,5 +47,6 @@ public class ConvertListTest {
         for (Integer value : result) {
             System.out.print(value + " ");
         }
+        assertThat(result, is(Arrays.asList(1, 2, 3, 4, 5, 6)));
     }
 }
