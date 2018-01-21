@@ -2,7 +2,10 @@ package ru.job4j.collections.sort;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -11,8 +14,10 @@ public class UserTest {
     @Test
     public void usersSortListToSet() {
         SortUser users = new SortUser();
-        List<User> userList = Arrays.asList
-                (new User("Петр", 30), new User("Антон", 25), new User("Василий", 20));
+        List<User> userList = Arrays.asList(
+                new User("Петр", 30),
+                new User("Антон", 25),
+                new User("Василий", 20));
         for (User user : userList) {
             System.out.println(String.format("Имя:%s Возраст:%d", user.getName(), user.getAge()));
         }

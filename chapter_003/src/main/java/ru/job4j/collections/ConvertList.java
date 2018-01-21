@@ -20,7 +20,7 @@ public class ConvertList {
         if (list.size() % rows != 0) {
             cols++;
         }
-        int array[][] = new int[cols][rows];
+        int[][] array = new int[cols][rows];
         int indexList = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {

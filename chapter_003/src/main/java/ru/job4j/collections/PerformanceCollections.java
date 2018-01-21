@@ -1,22 +1,24 @@
 package ru.job4j.collections;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Random;
 
 public class PerformanceCollections {
-    private static final String mCHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    private static final String RANDOM_CHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int STR_LENGTH = 5; // длина генерируемой строки
 
-    Collection<String> collection;
-    Random random = new Random();
+    private Collection<String> collection;
+    private Random random = new Random();
 
     public long add(Collection<String> collection, int amount) {
-
         Date startLinked = new Date();
         for (int i = 0; i < amount; i++) {
             StringBuilder builder = new StringBuilder();
             for (int j = 0; j < STR_LENGTH; j++) {
-                int number = random.nextInt(mCHAR.length());
-                char ch = mCHAR.charAt(number);
+                int number = random.nextInt(RANDOM_CHAR.length());
+                char ch = RANDOM_CHAR.charAt(number);
                 builder.append(ch);
             }
             collection.add(builder.toString());
@@ -29,8 +31,7 @@ public class PerformanceCollections {
     public long delete(Collection<String> collection, int amount) {
         Date startLinked = new Date();
         Iterator<String> iter = collection.iterator();
-        String string;
-        for(int i =0; i < amount; i++){
+        for (int i = 0; i < amount; i++) {
             iter.next();
             iter.remove();
         }

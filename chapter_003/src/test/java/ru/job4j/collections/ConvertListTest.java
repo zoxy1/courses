@@ -13,7 +13,7 @@ public class ConvertListTest {
     @Test
     public void convertArrayToList() {
         ConvertList convertList = new ConvertList();
-        int array[][] = {{1, 2, 3}, {4, 5, 6}, {7}};
+        int[][] array = {{1, 2, 3}, {4, 5, 6}, {7}};
         List<Integer> list = convertList.toList(array);
         for (Integer value : list) {
             System.out.printf(String.valueOf(value.intValue()) + ", ");
@@ -28,14 +28,14 @@ public class ConvertListTest {
         for (int i = 1; i < 8; i++) {
             list.add(i);
         }
-        int array[][] = convertList.toArray(list, 3);
+        int[][] array = convertList.toArray(list, 3);
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 System.out.print(array[i][j] + " ");
             }
             System.out.println();
         }
-        int arrayExpected[][] = {{1, 2, 3}, {4, 5, 6}, {7, 0, 0}};
+        int[][] arrayExpected = {{1, 2, 3}, {4, 5, 6}, {7, 0, 0}};
         assertThat(array, is(arrayExpected));
     }
 
