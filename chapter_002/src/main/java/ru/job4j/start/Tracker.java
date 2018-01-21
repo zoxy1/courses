@@ -1,7 +1,6 @@
 package ru.job4j.start;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,12 +16,13 @@ public class Tracker {
     public void update(Item item) {
         boolean isFound = false;
         for (Item itemList : this.items) {
-            if (itemList != null && itemList.getId().equals(item.getId())) ;
-            this.items.set(this.items.indexOf(itemList), item);
-            isFound = true;
-            break;
+            if (itemList != null && itemList.getId().equals(item.getId())) {
+                this.items.set(this.items.indexOf(itemList), item);
+                isFound = true;
+                break;
+            }
         }
-        if (isFound == false) {
+        if (!isFound) {
             System.out.println("Item with such id not found!");
         }
     }

@@ -10,6 +10,7 @@ public class ConsoleInput implements Input {
 
     public String ask(String question) {
         System.out.print(question);
+        System.out.println();
         return scanner.nextLine();
     }
 

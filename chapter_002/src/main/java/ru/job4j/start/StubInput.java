@@ -9,11 +9,13 @@ public class StubInput implements Input {
 
     @Override
     public String ask(String question) {
-        return this.strings[count++];
+        return this.strings[this.count++];
     }
 
     @Override
     public int ask(String question, int[] range) {
-        return -1;
+        System.out.print(question);
+        System.out.println();
+        return Integer.valueOf(this.strings[this.count++]);
     }
 }
