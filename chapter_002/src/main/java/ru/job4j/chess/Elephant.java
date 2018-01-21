@@ -9,11 +9,11 @@ public class Elephant extends Figure {
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         Cell[] cells = new Cell[7];
         int indexCell = 0;
-        if (Math.abs(this.position.getX() - dist.getX()) == Math.abs(this.position.getY() - dist.getY())) {
+        if (Math.abs(this.getPosition().getX() - dist.getX()) == Math.abs(this.getPosition().getY() - dist.getY())) {
             int xDist = dist.getX();
             int yDist = dist.getY();
-            int x = this.position.getX();
-            int y = this.position.getY();
+            int x = this.getPosition().getX();
+            int y = this.getPosition().getY();
             int signX;
             int signY;
             if (x < xDist) {

@@ -11,7 +11,7 @@ public class Board {
         Integer indexFigureFound = null;
         Boolean isMoved = false;
         for (int i = 0; i < this.figures.length; i++) {
-            if (source.equals(this.figures[i].position)) {
+            if (source.equals(this.figures[i].getPosition())) {
                 indexFigureFound = i;
                 break;
             }
@@ -22,7 +22,7 @@ public class Board {
         Cell[] cells = this.figures[indexFigureFound].way(dist);
         for (Figure figure : figures) {
             for (Cell cell : cells) {
-                if (figure.position.getX() == cell.getX() && figure.position.getY() == cell.getY()) {
+                if (figure.getPosition().getX() == cell.getX() && figure.getPosition().getY() == cell.getY()) {
                     throw new OccupiedWayException("Way is occupied.");
                 }
             }

@@ -33,7 +33,7 @@ public class BoardTest {
         Board board = new Board(figures);
         Cell positionDist = new Cell(7, 7);
         assertTrue(board.move(new Cell(1, 1), positionDist));
-        Cell positionActual = board.getFigures()[0].position;
+        Cell positionActual = board.getFigures()[0].getPosition();
         assertTrue(positionDist.equals(positionActual));
     }
 }

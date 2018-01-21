@@ -10,7 +10,7 @@ class EditItem extends BaseAction {
     private Input input;
     private Tracker tracker;
 
-    public EditItem(Input input, Tracker tracker) {
+    EditItem(Input input, Tracker tracker) {
         super(3, "Edit item");
         this.input = input;
         this.tracker = tracker;
@@ -37,7 +37,7 @@ class EditItem extends BaseAction {
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-
+    private int idPositions;
     private int[] ranges;
     private UserAction[] actions = new UserAction[7];
 
@@ -80,7 +80,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public AddItem(Input input, Tracker tracker) {
+        AddItem(Input input, Tracker tracker) {
             super(1, "Add new item");
             this.input = input;
             this.tracker = tracker;
@@ -96,14 +96,14 @@ public class MenuTracker {
             String name = this.input.ask("Enter name item:");
             String desc = this.input.ask("Enter description item:");
             long created = new Date().getTime();
-            this.tracker.add(new Item(name, desc, created));
+            this.tracker.add(new Item(String.valueOf(idPositions++), name, desc, created));
         }
     }
 
     private static class ShowItems extends BaseAction {
         private Tracker tracker;
 
-        public ShowItems(Tracker tracker) {
+        ShowItems(Tracker tracker) {
             super(2, "Show all items");
             this.tracker = tracker;
         }
@@ -128,7 +128,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public DeleteItem(Input input, Tracker tracker) {
+        DeleteItem(Input input, Tracker tracker) {
             super(4, "Delete item.");
             this.input = input;
             this.tracker = tracker;
@@ -153,7 +153,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public FindItemById(Input input, Tracker tracker) {
+        FindItemById(Input input, Tracker tracker) {
             super(5, "Find item by id");
             this.input = input;
             this.tracker = tracker;
@@ -180,7 +180,7 @@ public class MenuTracker {
         private Input input;
         private Tracker tracker;
 
-        public FindItemByName(Input input, Tracker tracker) {
+        FindItemByName(Input input, Tracker tracker) {
             super(6, "Find item by name");
             this.input = input;
             this.tracker = tracker;
@@ -207,7 +207,7 @@ public class MenuTracker {
 
     private class Exit extends BaseAction {
 
-        public Exit() {
+        Exit() {
             super(7, "Exit");
         }
 
