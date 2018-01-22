@@ -1,4 +1,3 @@
-http://job4j.ru/
-Цель 1 - пройти данный курс, срок до 1 декабря 2017г.  
-цель 2 - написать проект (например интернет магазин) для портфолио с использованием современных технологий, таких как Spring Framework, Hibernate ORM и тп, для фронтенда пока не знаю какой фрамеворк использовать хотелось бы наиболее востребованный сейчас на рынке(может Angular или React) срок до 1 февраля 2018 года.    
- 
+[![Build Status](https://travis-ci.org/zoxy1/courses.svg?branch=master)](https://travis-ci.org/zoxy1/courses)
+[![codecov](https://codecov.io/gh/zoxy1/courses/branch/master/graph/badge.svg)](https://codecov.io/gh/zoxy1/courses)
+
