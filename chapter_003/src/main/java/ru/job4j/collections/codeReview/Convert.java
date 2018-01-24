@@ -34,7 +34,7 @@ public class Convert {
          */
 
 
-        int[][] array = new int[rws][cls]; // после объявления переменных ставится пустая строка 
+        int[][] array = new int[rws][cls]; // после объявления переменных ставится пустая строка
         for (int i = 0; i < rws; i++) {
             for (int j = 0; j < cls; j++) {
                 if (iterator.hasNext()) // принято добавлять фигурные скобки даже если используется один оператор
