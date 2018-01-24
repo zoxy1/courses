@@ -16,8 +16,10 @@ public class Convert {
      */
     //Converts array to list
     List<Integer> makeList(int[][] array) {
-        ArrayList<Integer> list = new ArrayList<>(); // обычно стараются везде использовать интерфейсы для того чтобы
-        // вслучае необходимости можно было например без переписывания основного кода ArrayList заменить на LinkedList
+        /* обычно стараются везде использовать интерфейсы для того, чтобы
+        *  вслучае необходимости можно было например без переписывания основного кода ArrayList заменить на LinkedList
+        */
+        ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++)
                 list.add(array[i][j]);
@@ -34,10 +36,10 @@ public class Convert {
          */
 
 
-        int[][] array = new int[rws][cls]; // после объявления переменных ставится пустая строка 
+        int[][] array = new int[rws][cls]; // после объявления переменных ставят пустую строку для визуального выделения
         for (int i = 0; i < rws; i++) {
             for (int j = 0; j < cls; j++) {
-                if (iterator.hasNext()) // принято добавлять фигурные скобки даже если используется один оператор
+                if (iterator.hasNext())    // принято добавлять фигурные скобки даже если используется один оператор
                     array[i][j] = iterator.next();
                 else
                     array[i][j] = 0;

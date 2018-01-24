@@ -12,14 +12,15 @@ package ru.job4j.collections.codeReview;
 
 
 public class Bank {
-    /* обычно стараются везде использовать интерфейсы для того чтобы
-     * вслучае необходимости можно было например без переписывания основного кода TreeMap заменить на HashMap
-     * название переменной не по конвенкции лучше писать treeMa
-     */
+
+    /* обычно стараются везде использовать интерфейсы для того, чтобы
+    * вслучае необходимости можно было например без переписывания основного кода TreeMap заменить на HashMap,
+    * название переменной не по code conventions правильное наименование treeMap
+    */
     private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>();
 
     public void addUser(User user) {
-        this.treemap.put(user, new ArrayList<>());
+        this.treemap.put(user, new ArrayList<Account>());
     }
 
     public void delete(User user) {
@@ -30,9 +31,10 @@ public class Bank {
         this.treemap.get(user).add(account);
     }
 
+    /* тело метода можно заменить на return this.treemap.get(user).get(list.indexOf(account));
+       * без объявления переменной
+       */
     private Account getActualAccount(User user, Account account) {
-        // тело метода можно заменить наtreemap return this.treemap.get(user).get(list.indexOf(account));
-        // без объявъления переменной
         ArrayList<Account> list = this.treemap.get(user);
         return list.get(list.indexOf(account));
     }
@@ -53,6 +55,7 @@ public class Bank {
                 getActualAccount(user2, account2), amount);
     }
 
+    // не корректно переопределен метод, вернет не аккаунты, а ссылку переменной treemap
     public String toString() {
         return "Bank{" + "accounts=" + treemap + "}";
     }

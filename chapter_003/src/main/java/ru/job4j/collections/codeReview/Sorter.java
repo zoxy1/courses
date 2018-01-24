@@ -27,8 +27,8 @@ public class Sorter {
      */
     List<User> sortnamelength (List<User> list) {
 
-        /* Необязательно объявлять перенную типа
-         * Comparator<User> compar, можно использовать анонимный класс или лямбда выражение
+        /* Необязательно объявлять перенную типа Comparator<User> compar,
+         * можно использовать анонимный класс или лямбда выражение
          */
         Comparator<User> compar = new Comparator<User>() {
             @Override
@@ -41,8 +41,8 @@ public class Sorter {
     }
 
     /* если метод будет использоваться в других пакетах, то нужно добавить модификатор
-     * доступа public, лишний пробел после имени методов, неправильное написание имени метода нужно sortBoth
-     * в языке Java принято использовать lowerCamelCase для наименования методов
+     * доступа public, лишний пробел после имени методов и круглой скобкой, неправильное написание имени метода
+     * нужно sortBoth в языке Java принято использовать lowerCamelCase для наименования методов
      */
     List<User> sortboth (List<User> list) {
         Comparator<User> compar1 = new Comparator<User>() {
