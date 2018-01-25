@@ -6,13 +6,12 @@ public class Account {
     double values;
     String reqs;
 
-    public Account(double values, String requisites) {
-
-        /* переменную values лучше назвать value значение же одно,
-        * values больше подойдет для названия массивов, коллекций,
-        * имя переменной может заменить на requestSites?
-        * В языке Java принято использовать lowerCamelCase — для именования полей классов.
-        */
+    public Account(double values, String requisites) { // переменную values лучше назвать value значение же одно,
+        // values больше подойдет для названия массивов коллекций
+        // values больше подойдет для названия массивов, коллекций
+        // неправильное написание имени переменной, заменить на requestSites
+        // В языке Java принято использовать lowerCamelCase — для именования экземпляров классов и методов,
+        // не final переменных.
         this.values = values;
         this.reqs = requisites;
     }
@@ -51,8 +50,8 @@ public class Account {
     }
 
     /* обычно ставят аннотацию, что метод переопределяется @Override
-    * думаю нужно еще добавить переменную values для сравнение аккаунтов(в зависимости от логики)
-    */
+     * думаю нужно еще добавить переменную values для сравнение аккаунтов(в зависимости от логики)
+     */
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -66,9 +65,9 @@ public class Account {
         return this.reqs.equals(account.reqs);
     }
 
-    /*обычно ставят аннотацию, что метод переопределяется @Override
-    * думаю нужно еще добавить переменную values, если она будет добавлена в equals
-    */
+    /* обычно ставят аннотацию, что метод переопределяется @Override
+     * думаю нужно еще добавить переменную values, если она будет добавлена в equals
+     */
     public int hashCode() {
         return this.reqs.hashCode();
     }
